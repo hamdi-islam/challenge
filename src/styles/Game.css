@@ -1,0 +1,128 @@
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 800px;
+  height: 400px;
+  position: relative;
+  box-sizing: border-box;
+  grid-gap: 1px;
+  background-color: RGB(250, 250, 250);
+}
+.item {
+  border: thin solid RGB(203, 203, 203);
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+}
+.dice-wrapper {
+  width: 80px;
+  height: 80px;
+  border: thin solid RGB(203, 203, 203);
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5%;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-template-areas:
+    "tl . tr"
+    "ml mm mr"
+    "bl . br";
+}
+.dice-dot {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 4px;
+  background-color: RGB(196, 196, 196);
+}
+.dice-dot:nth-child(2) {
+  grid-area: br;
+}
+.dice-dot:nth-child(3) {
+  grid-area: bl;
+}
+.dice-dot:nth-child(4) {
+  grid-area: tr;
+}
+.dice-dot:nth-child(5) {
+  grid-area: ml;
+}
+.dice-dot:nth-child(6) {
+  grid-area: mr;
+}
+.dice-dot:nth-child(odd):last-child {
+  grid-area: mm;
+}
+.player-board {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.player-board span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.player-board span.primary {
+  background-color: RGB(238, 24, 97);
+}
+.player-board span.secondary {
+  background-color: RGB(136, 136, 136);
+}
+.total-score {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-top: 100px;
+}
+.total-score.primary {
+  background-color: RGB(238, 24, 97);
+  color: white;
+}
+.total-score.secondary {
+  color: gray;
+  background-color: white;
+  border: thin solid gray;
+}
+.roll-score {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: RGB(238, 24, 97);
+  top: -40px;
+  right: -20px;
+  font-weight: lighter;
+  font-size: medium;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+  transition-delay: 0.3s;
+}
+.roll-score.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.5s linear;
+}
